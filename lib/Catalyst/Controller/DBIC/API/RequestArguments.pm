@@ -110,7 +110,7 @@ Is passed to ->search to determine sorting.
         default   => sub { $p->static ? [] : undef },
     );
 
-=attribute_public groupd_by
+=attribute_public grouped_by
 
 Is passed to ->search to determine aggregate results.
 

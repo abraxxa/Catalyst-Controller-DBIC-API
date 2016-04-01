@@ -2,6 +2,7 @@ Revision history for Catalyst-Controller-DBIC-API: {{ $dist->version }}
 
 {{ $NEXT }}
   - Improve data_root & item_root documentation
+  - Fix grouped_by request argument documentation
 
 2.006002  2014-08-26 12:31:27+02:00 Europe/Vienna
  - Fix missing Data::Printer test requirement
@@ -136,7 +137,7 @@ Revision history for Catalyst-Controller-DBIC-API: {{ $dist->version }}
    + list_format_output
    + row_format_output (which is just a passthrough per row)
  - Search can now take an array of hashrefs to give the ability to use the
-   default 'OR' 
+   default 'OR'
  - By default search_parameters is an ArrayRef[HashRef] which is pertinent
    to list_munge_parameters
  - More thorough documentation of the various bits and pieces.
