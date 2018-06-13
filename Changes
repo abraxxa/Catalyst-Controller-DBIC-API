@@ -4,6 +4,7 @@ Revision history for Catalyst-Controller-DBIC-API: {{ $dist->version }}
   - Improve data_root & item_root documentation
   - Fix grouped_by request argument documentation
   - Don't overwrite already set response data when return_object is enabled
+  - Use JSON::MaybeXS for improved performance
 
 2.006002  2014-08-26 12:31:27+02:00 Europe/Vienna
  - Fix missing Data::Printer test requirement

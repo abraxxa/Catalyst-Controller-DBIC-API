@@ -11,9 +11,9 @@ use DBICTest;
 use Test::More;
 use Test::WWW::Mechanize::Catalyst 'RestTest';
 use HTTP::Request::Common;
-use JSON;
+use JSON::MaybeXS;
 
-my $json = JSON->new->utf8;
+my $json = JSON::MaybeXS->new(utf8 => 1);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new;
 ok( my $schema = DBICTest->init_schema(), 'got schema' );
@@ -119,7 +119,7 @@ my $tracks_update_url = $track_url;
     $mech->request($req);
     cmp_ok( $mech->status, '==', 400, 'Attempt to update three tracks fails' );
     my $response = $json->decode( $mech->content );
-    is( $response->{success}, JSON::false,
+    is( $response->{success}, JSON::MaybeXS::false,
         'success property returns unquoted false' );
     like(
         $response->{messages}->[0],
@@ -175,7 +175,7 @@ my $tracks_update_url = $track_url;
     cmp_ok( $mech->status, '==', 400,
         'Attempt to update three nonexisting tracks fails' );
     my $response = $json->decode( $mech->content );
-    is( $response->{success}, JSON::false,
+    is( $response->{success}, JSON::MaybeXS::false,
         'success property returns unquoted false' );
     like(
         $response->{messages}->[0],
