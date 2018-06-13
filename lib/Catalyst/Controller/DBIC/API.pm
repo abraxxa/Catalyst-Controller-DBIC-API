@@ -964,7 +964,9 @@ sub end : Private {
     if ( $c->res->status == 200 ) {
         $c->stash->{ $self->stash_key }->{success} =
             $self->use_json_boolean ? JSON::true : 'true';
-        if ( $self->return_object && $c->req->has_objects ) {
+        if ( $self->return_object
+            && $c->req->has_objects
+            && ! exists $c->stash->{ $self->stash_key }->{ $self->data_root } ) {
             my $returned_objects = [];
             push( @$returned_objects, $self->each_object_inflate( $c, $_ ) )
                 for map { $_->[0] } $c->req->all_objects;
