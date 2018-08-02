@@ -1,6 +1,8 @@
 Revision history for Catalyst-Controller-DBIC-API: {{ $dist->version }}
 
 {{ $NEXT }}
+
+2.007002  2018-08-02 21:55:55+02:00 Europe/Vienna
   - Remove the debug logging which shouldn't have been in the previous release
 
 2.007001  2018-08-02 21:12:33+02:00 Europe/Vienna
