@@ -1,6 +1,8 @@
 Revision history for Catalyst-Controller-DBIC-API: {{ $dist->version }}
 
 {{ $NEXT }}
+
+2.008001  2019-11-26 16:39:44+01:00 Europe/Vienna
   - Add support for has_many relationships (RT#65168)
   - Remove update_object_relation method
     replaced by DBIx::Class::ResultSet::RecursiveUpdate
