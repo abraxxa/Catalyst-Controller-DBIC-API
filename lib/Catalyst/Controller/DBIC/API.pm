@@ -740,11 +740,15 @@ sub validate_object {
             }
 
             # check for multiple values
-            if ( ref($value) && !( reftype($value) eq reftype(JSON::MaybeXS::true) ) )
-            {
-                require Data::Dumper;
-                die
-                    "Multiple values for '${key}': ${\Data::Dumper::Dumper($value)}";
+            if ( ref($value) && !( reftype($value) eq reftype(JSON::MaybeXS::true) ) ) {
+                # PostgreSQL supports arrays
+                unless (ref($value) eq 'ARRAY'
+                    && $self->stored_result_source->schema->storage->sqlt_type eq 'PostgreSQL'
+                    && $object->result_source->column_info($key)->{data_type} =~ /\[\]$/) {
+                    require Data::Dumper;
+                    die
+                        "Multiple values for '${key}': ${\Data::Dumper::Dumper($value)}";
+                }
             }
 
             # check exists so we don't just end up with hash of undefs
